@@ -6,6 +6,17 @@
   background: #f0f0f0;
 }
 
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.board-row {
+  display: flex;
+  gap: 5px;
+}
+
 .square {
   width: 100px;
   height: 100px;

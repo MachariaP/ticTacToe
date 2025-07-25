@@ -34,3 +34,7 @@
   background: white;
   cursor: pointer;
 }
+
+.square:disabled {
+  cursor: not-allowed;
+}

@@ -2,8 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Confetti from 'react-confetti';
 import Board from '../Board/Board';
-import HistoryControls from '../HistoryControls/HistoryControls';
-import { GameProvider, useGame } from './GameContext';
+import { useGame } from './GameContext';
 
 function GameContent() {
   const { status, winner } = useGame();
@@ -27,20 +26,13 @@ function GameContent() {
       >
         {status}
       </motion.div>
-      <div className="game-layout">
-        <Board />
-        <HistoryControls />
-      </div>
+      <Board />
     </div>
   );
 }
 
 function Game() {
-  return (
-    <GameProvider>
-      <GameContent />
-    </GameProvider>
-  );
+  return <GameContent />;
 }
 
 export default Game;

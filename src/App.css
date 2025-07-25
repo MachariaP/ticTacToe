@@ -28,8 +28,19 @@ body {
 }
 
 .app {
-  max-width: 800px;
+  max-width: 1400px; /* Increased for more room */
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 200px; /* Increased to push controls further right */
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
 }
 
 .game-container {
@@ -39,6 +50,18 @@ body {
   padding: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.controls-container {
+  max-width: 300px;
+  width: 100%;
+  padding: 20px;
+  background: rgba(43, 45, 66, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .game-title {
@@ -51,25 +74,16 @@ body {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.game-layout {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: 20px;
-}
-
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   max-width: 400px;
-  margin: 0 auto 30px;
   background: var(--board-bg);
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
 }
 
 .square {
@@ -133,11 +147,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 200px;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 20px;
 }
 
 .reset-btn,
@@ -169,8 +180,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: 300px;
+  max-height: 400px;
   overflow-y: auto;
+  padding-right: 5px;
 }
 
 .move-btn.current {
@@ -179,13 +191,19 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
-  .game-container {
-    padding: 20px;
-  }
-  .game-layout {
+@media (max-width: 800px) {
+  .app-layout {
     flex-direction: column;
     align-items: center;
+    gap: 30px;
+  }
+  .game-container {
+    max-width: 400px;
+    padding: 20px;
+  }
+  .controls-container {
+    max-width: 400px;
+    margin-top: 20px;
   }
   .board {
     max-width: 300px;
@@ -206,7 +224,6 @@ body {
     font-size: 1.5rem;
   }
   .history-controls {
-    width: 100%;
-    max-width: 300px;
+    padding: 15px;
   }
 }

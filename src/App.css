@@ -51,6 +51,15 @@ body {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.game-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -124,7 +133,11 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-top: 20px;
+  width: 200px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .reset-btn,
@@ -156,11 +169,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: 200px;
+  max-height: 300px;
   overflow-y: auto;
-  padding: 10px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
 }
 
 .move-btn.current {
@@ -172,6 +182,10 @@ body {
 @media (max-width: 600px) {
   .game-container {
     padding: 20px;
+  }
+  .game-layout {
+    flex-direction: column;
+    align-items: center;
   }
   .board {
     max-width: 300px;
@@ -190,5 +204,9 @@ body {
   }
   .status {
     font-size: 1.5rem;
+  }
+  .history-controls {
+    width: 100%;
+    max-width: 300px;
   }
 }

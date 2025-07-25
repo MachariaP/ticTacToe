@@ -1,17 +1,16 @@
 import React, { createContext, useState, useContext } from 'react';
 
-// Create Context
 const GameContext = createContext();
 
-// Hook to access context
 export function useGame() {
   return useContext(GameContext);
 }
 
-// Provider component
 export function GameProvider({ children }) {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
+  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const [currentMove, setCurrentMove] = useState(0);
 
   const winner = calculateWinner(squares);
   const status = winner
@@ -26,6 +25,15 @@ export function GameProvider({ children }) {
     newSquares[i] = isXNext ? 'X' : 'O';
     setSquares(newSquares);
     setIsXNext(!isXNext);
+    const newHistory = history.slice(0, currentMove + 1);
+    setHistory([...newHistory, newSquares]);
+    setCurrentMove(newHistory.length);
+  }
+
+  function jumpTo(move) {
+    setCurrentMove(move);
+    setSquares(history[move]);
+    setIsXNext(move % 2 === 0); // Even moves are X's turn
   }
 
   function calculateWinner(squares) {
@@ -46,7 +54,10 @@ export function GameProvider({ children }) {
   const value = {
     squares,
     status,
+    history,
+    currentMove,
     handleSquareClick,
+    jumpTo,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

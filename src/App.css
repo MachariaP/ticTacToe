@@ -38,3 +38,21 @@
 .square:disabled {
   cursor: not-allowed;
 }
+
+.history-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.history-controls button {
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.history-controls .current {
+  background: #4caf50;
+  color: white;
+}

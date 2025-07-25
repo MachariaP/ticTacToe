@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from '../Board/Board';
+import HistoryControls from '../HistoryControls/HistoryControls';
 import { GameProvider, useGame } from './GameContext';
 
 function Game() {
@@ -10,6 +11,7 @@ function Game() {
       <div className="game">
         <div>{status}</div>
         <Board />
+        <HistoryControls />
       </div>
     </GameProvider>
   );

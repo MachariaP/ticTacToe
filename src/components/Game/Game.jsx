@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Confetti from 'react-confetti';
 import Board from '../Board/Board';
 import HistoryControls from '../HistoryControls/HistoryControls';
 import { GameProvider, useGame } from './GameContext';
@@ -10,6 +11,7 @@ function Game() {
   return (
     <GameProvider>
       <div className="game-container">
+        {winner && <Confetti />}
         <motion.h1
           className="game-title"
           initial={{ opacity: 0, y: -20 }}

@@ -12,7 +12,10 @@ export function GameProvider({ children }) {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
 
-  const winner = calculateWinner(squares);
+  const winnerInfo = calculateWinner(squares);
+  const winner = winnerInfo ? winnerInfo.winner : null;
+  const winningLine = winnerInfo ? winnerInfo.line : [];
+
   const status = winner
     ? `Winner: ${winner}`
     : squares.every(Boolean)
@@ -33,7 +36,14 @@ export function GameProvider({ children }) {
   function jumpTo(move) {
     setCurrentMove(move);
     setSquares(history[move]);
-    setIsXNext(move % 2 === 0); // Even moves are X's turn
+    setIsXNext(move % 2 === 0);
+  }
+
+  function resetGame() {
+    setSquares(Array(9).fill(null));
+    setIsXNext(true);
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
   }
 
   function calculateWinner(squares) {
@@ -45,7 +55,7 @@ export function GameProvider({ children }) {
 
     for (const [a, b, c] of lines) {
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a];
+        return { winner: squares[a], line: [a, b, c] };
       }
     }
     return null;
@@ -54,10 +64,13 @@ export function GameProvider({ children }) {
   const value = {
     squares,
     status,
+    winner,
+    winningLine,
     history,
     currentMove,
     handleSquareClick,
     jumpTo,
+    resetGame,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

@@ -1,25 +1,21 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Square from '../Square/Square';
 
 function Board() {
   return (
-    <div className="board">
-      <div className="board-row">
-        <Square index={0} />
-        <Square index={1} />
-        <Square index={2} />
-      </div>
-      <div className="board-row">
-        <Square index={3} />
-        <Square index={4} />
-        <Square index={5} />
-      </div>
-      <div className="board-row">
-        <Square index={6} />
-        <Square index={7} />
-        <Square index={8} />
-      </div>
-    </div>
+    <motion.div
+      className="board"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      {Array(9)
+        .fill(null)
+        .map((_, index) => (
+          <Square key={index} index={index} />
+        ))}
+    </motion.div>
   );
 }
 

@@ -1,23 +1,23 @@
 import React from 'react';
 import Square from '../Square/Square';
 
-function Board({ squares, onSquareClick }) {
+function Board() {
   return (
     <div className="board">
       <div className="board-row">
-        <Square value={squares[0]} onSquareClick={() => onSquareClick(0)} />
-        <Square value={squares[1]} onSquareClick={() => onSquareClick(1)} />
-        <Square value={squares[2]} onSquareClick={() => onSquareClick(2)} />
+        <Square index={0} />
+        <Square index={1} />
+        <Square index={2} />
       </div>
       <div className="board-row">
-        <Square value={squares[3]} onSquareClick={() => onSquareClick(3)} />
-        <Square value={squares[4]} onSquareClick={() => onSquareClick(4)} />
-        <Square value={squares[5]} onSquareClick={() => onSquareClick(5)} />
+        <Square index={3} />
+        <Square index={4} />
+        <Square index={5} />
       </div>
       <div className="board-row">
-        <Square value={squares[6]} onSquareClick={() => onSquareClick(6)} />
-        <Square value={squares[7]} onSquareClick={() => onSquareClick(7)} />
-        <Square value={squares[8]} onSquareClick={() => onSquareClick(8)} />
+        <Square index={6} />
+        <Square index={7} />
+        <Square index={8} />
       </div>
     </div>
   );

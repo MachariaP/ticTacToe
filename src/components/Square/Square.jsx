@@ -1,8 +1,12 @@
 import React from 'react';
+import { useGame } from '../Game/GameContext';
 
-function Square({ value, onSquareClick }) {
+function Square({ index }) {
+  const { squares, handleSquareClick } = useGame();
+  const value = squares[index];
+
   return (
-    <button className="square" onClick={onSquareClick}>
+    <button className="square" onClick={() => handleSquareClick(index)}>
       {value}
     </button>
   );
